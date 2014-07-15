@@ -12,6 +12,9 @@
 		BB71DEB8196BB80000CA805E /* ClassMapper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB71DEB6196BB80000CA805E /* ClassMapper.xcdatamodeld */; };
 		BB71DEBA196BB80000CA805E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB71DEB9196BB80000CA805E /* Images.xcassets */; };
 		BB71DEC6196BB80000CA805E /* ClassMapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB71DEC5196BB80000CA805E /* ClassMapperTests.m */; };
+		BB71DED0196BB8F900CA805E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB71DECF196BB8F900CA805E /* Storyboard.storyboard */; };
+		BB87073B1975023E00CC48C1 /* MapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BB87073A1975023E00CC48C1 /* MapVC.m */; };
+		BB87073F1975039000CC48C1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB87073E1975039000CC48C1 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,10 @@
 		BB71DEBF196BB80000CA805E /* ClassMapperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClassMapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB71DEC4196BB80000CA805E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB71DEC5196BB80000CA805E /* ClassMapperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassMapperTests.m; sourceTree = "<group>"; };
+		BB71DECF196BB8F900CA805E /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = ../../classMapper/ClassMapper/Storyboard.storyboard; sourceTree = "<group>"; };
+		BB8707391975023E00CC48C1 /* MapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapVC.h; sourceTree = "<group>"; };
+		BB87073A1975023E00CC48C1 /* MapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapVC.m; sourceTree = "<group>"; };
+		BB87073E1975039000CC48C1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB87073F1975039000CC48C1 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +66,7 @@
 		BB71DEA3196BB80000CA805E = {
 			isa = PBXGroup;
 			children = (
+				BB87073E1975039000CC48C1 /* MapKit.framework */,
 				BB71DEAE196BB80000CA805E /* ClassMapper */,
 				BB71DEC2196BB80000CA805E /* ClassMapperTests */,
 				BB71DEAD196BB80000CA805E /* Products */,
@@ -78,6 +87,9 @@
 			children = (
 				BB71DEB3196BB80000CA805E /* AppDelegate.h */,
 				BB71DEB4196BB80000CA805E /* AppDelegate.m */,
+				BB71DECF196BB8F900CA805E /* Storyboard.storyboard */,
+				BB8707391975023E00CC48C1 /* MapVC.h */,
+				BB87073A1975023E00CC48C1 /* MapVC.m */,
 				BB71DEB9196BB80000CA805E /* Images.xcassets */,
 				BB71DEB6196BB80000CA805E /* ClassMapper.xcdatamodeld */,
 				BB71DEAF196BB80000CA805E /* Supporting Files */,
@@ -191,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB71DEBA196BB80000CA805E /* Images.xcassets in Resources */,
+				BB71DED0196BB8F900CA805E /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB71DEB5196BB80000CA805E /* AppDelegate.m in Sources */,
+				BB87073B1975023E00CC48C1 /* MapVC.m in Sources */,
 				BB71DEB8196BB80000CA805E /* ClassMapper.xcdatamodeld in Sources */,
 				BB71DEB2196BB80000CA805E /* main.m in Sources */,
 			);
@@ -317,6 +331,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = ClassMapper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -328,6 +343,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = ClassMapper/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -346,6 +362,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = ClassMapperTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -362,6 +379,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = ClassMapperTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -388,6 +406,7 @@
 				BB71DECB196BB80000CA805E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BB71DECC196BB80000CA805E /* Build configuration list for PBXNativeTarget "ClassMapperTests" */ = {
 			isa = XCConfigurationList;
@@ -396,6 +415,7 @@
 				BB71DECE196BB80000CA805E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

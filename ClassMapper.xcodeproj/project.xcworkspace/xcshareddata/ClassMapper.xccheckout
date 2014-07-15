@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A43D95D9-01C1-47B4-8363-C30FDB0083E4</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ClassMapper</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E7CF5AA7-279D-4D6A-89A4-00B5612366CA</key>
+		<string>ssh://github.com/mhz5/ClassMapper.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ClassMapper.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E7CF5AA7-279D-4D6A-89A4-00B5612366CA</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/mhz5/ClassMapper.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E7CF5AA7-279D-4D6A-89A4-00B5612366CA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E7CF5AA7-279D-4D6A-89A4-00B5612366CA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>classMapper</string>
+		</dict>
+	</array>
+</dict>
+</plist>
