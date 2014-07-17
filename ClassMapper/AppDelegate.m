@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "MapVC.h"
 
 @interface AppDelegate ()
             
@@ -20,6 +21,11 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    MapVC *viewController = [[MapVC alloc] initWithNibName:@"MapVC" bundle:nil];
+    [self.window setRootViewController:viewController];
+    [self.window makeKeyAndVisible];
+
     return YES;
 }
 

@@ -11,6 +11,6 @@
 
 @interface MapVC : UIViewController <MKMapViewDelegate>
 
-@property (strong, nonatomic) IBOutlet MKMapView *map;
+@property (strong, nonatomic) IBOutlet MKMapView *yaleMap;
 
 @end

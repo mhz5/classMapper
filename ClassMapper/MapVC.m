@@ -26,14 +26,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     MKCoordinateRegion region;
     region.center.latitude = 41.314081;
     region.center.longitude = -72.928297;
     region.span.latitudeDelta = .04;
     region.span.longitudeDelta = .04;
     
-    [_map setRegion:region animated:YES];
+    [_yaleMap setRegion:region animated:YES];
     
     // Do any additional setup after loading the view.
 }

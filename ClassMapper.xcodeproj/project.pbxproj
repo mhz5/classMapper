@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB2B091E197664A50061D9BD /* MapVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB2B091D197664A50061D9BD /* MapVC.xib */; };
+		BB2B092219766D220061D9BD /* ClassListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2B092019766D220061D9BD /* ClassListVC.m */; };
+		BB2B092319766D220061D9BD /* ClassListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB2B092119766D220061D9BD /* ClassListVC.xib */; };
 		BB71DEB2196BB80000CA805E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB71DEB1196BB80000CA805E /* main.m */; };
 		BB71DEB5196BB80000CA805E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB71DEB4196BB80000CA805E /* AppDelegate.m */; };
 		BB71DEB8196BB80000CA805E /* ClassMapper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB71DEB6196BB80000CA805E /* ClassMapper.xcdatamodeld */; };
 		BB71DEBA196BB80000CA805E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB71DEB9196BB80000CA805E /* Images.xcassets */; };
 		BB71DEC6196BB80000CA805E /* ClassMapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB71DEC5196BB80000CA805E /* ClassMapperTests.m */; };
-		BB71DED0196BB8F900CA805E /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB71DECF196BB8F900CA805E /* Storyboard.storyboard */; };
 		BB87073B1975023E00CC48C1 /* MapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BB87073A1975023E00CC48C1 /* MapVC.m */; };
 		BB87073F1975039000CC48C1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB87073E1975039000CC48C1 /* MapKit.framework */; };
 /* End PBXBuildFile section */
@@ -28,6 +30,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB2B091D197664A50061D9BD /* MapVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapVC.xib; sourceTree = "<group>"; };
+		BB2B091F19766D220061D9BD /* ClassListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassListVC.h; sourceTree = "<group>"; };
+		BB2B092019766D220061D9BD /* ClassListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassListVC.m; sourceTree = "<group>"; };
+		BB2B092119766D220061D9BD /* ClassListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassListVC.xib; sourceTree = "<group>"; };
 		BB71DEAC196BB80000CA805E /* ClassMapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassMapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB71DEB0196BB80000CA805E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB71DEB1196BB80000CA805E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -38,7 +44,6 @@
 		BB71DEBF196BB80000CA805E /* ClassMapperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClassMapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB71DEC4196BB80000CA805E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB71DEC5196BB80000CA805E /* ClassMapperTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClassMapperTests.m; sourceTree = "<group>"; };
-		BB71DECF196BB8F900CA805E /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard.storyboard; path = ../../classMapper/ClassMapper/Storyboard.storyboard; sourceTree = "<group>"; };
 		BB8707391975023E00CC48C1 /* MapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapVC.h; sourceTree = "<group>"; };
 		BB87073A1975023E00CC48C1 /* MapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapVC.m; sourceTree = "<group>"; };
 		BB87073E1975039000CC48C1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -63,6 +68,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB2B092419766D280061D9BD /* ClassList */ = {
+			isa = PBXGroup;
+			children = (
+				BB2B091F19766D220061D9BD /* ClassListVC.h */,
+				BB2B092019766D220061D9BD /* ClassListVC.m */,
+				BB2B092119766D220061D9BD /* ClassListVC.xib */,
+			);
+			name = ClassList;
+			sourceTree = "<group>";
+		};
+		BB2B092519766D2F0061D9BD /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				BB8707391975023E00CC48C1 /* MapVC.h */,
+				BB87073A1975023E00CC48C1 /* MapVC.m */,
+				BB2B091D197664A50061D9BD /* MapVC.xib */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
 		BB71DEA3196BB80000CA805E = {
 			isa = PBXGroup;
 			children = (
@@ -87,9 +112,8 @@
 			children = (
 				BB71DEB3196BB80000CA805E /* AppDelegate.h */,
 				BB71DEB4196BB80000CA805E /* AppDelegate.m */,
-				BB71DECF196BB8F900CA805E /* Storyboard.storyboard */,
-				BB8707391975023E00CC48C1 /* MapVC.h */,
-				BB87073A1975023E00CC48C1 /* MapVC.m */,
+				BB2B092419766D280061D9BD /* ClassList */,
+				BB2B092519766D2F0061D9BD /* Map */,
 				BB71DEB9196BB80000CA805E /* Images.xcassets */,
 				BB71DEB6196BB80000CA805E /* ClassMapper.xcdatamodeld */,
 				BB71DEAF196BB80000CA805E /* Supporting Files */,
@@ -203,7 +227,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB71DEBA196BB80000CA805E /* Images.xcassets in Resources */,
-				BB71DED0196BB8F900CA805E /* Storyboard.storyboard in Resources */,
+				BB2B091E197664A50061D9BD /* MapVC.xib in Resources */,
+				BB2B092319766D220061D9BD /* ClassListVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +250,7 @@
 				BB87073B1975023E00CC48C1 /* MapVC.m in Sources */,
 				BB71DEB8196BB80000CA805E /* ClassMapper.xcdatamodeld in Sources */,
 				BB71DEB2196BB80000CA805E /* main.m in Sources */,
+				BB2B092219766D220061D9BD /* ClassListVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +307,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				METAL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -317,7 +343,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				METAL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
