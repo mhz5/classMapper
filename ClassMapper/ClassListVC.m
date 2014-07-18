@@ -7,12 +7,14 @@
 //
 
 #import "ClassListVC.h"
+#import "MapVC.h"
 
 @interface ClassListVC ()
 
 @end
 
 @implementation ClassListVC
+UIModalTransitionStyle modalTransitionStyle;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,4 +37,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+/* Button action: transition to map view and map classes. */
+- (IBAction)mapClasses:(id)sender {
+    MapVC *map = [[MapVC alloc] initWithNibName:@"MapVC" bundle:nil];
+    
+    // Set transition animation style.
+    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    map.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:map animated:YES completion:nil];
+}
 @end

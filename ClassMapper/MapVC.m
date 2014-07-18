@@ -7,6 +7,7 @@
 //
 
 #import "MapVC.h"
+#import "ClassListVC.h"
 
 @interface MapVC ()
 
@@ -35,7 +36,25 @@
     
     [_yaleMap setRegion:region animated:YES];
     
-    // Do any additional setup after loading the view.
+
+    CLLocationCoordinate2D coor;
+    coor.latitude = 41.314081;
+    coor.longitude = -72.928297;
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    annotation.coordinate = coor;
+    
+    [_yaleMap addAnnotation:annotation];
+    
+    MKLocalSearchRequest *req = [[MKLocalSearchRequest alloc] init];
+    req.naturalLanguageQuery = @"grove street and whitney, New Haven, CT";
+    req.region = region;
+    
+    MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:req];
+    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+        NSArray *arr = response.mapItems;
+        for(MKMapItem *item in arr)
+            NSLog(@"Search Results: %@", item.placemark);
+    }];
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
@@ -63,4 +82,8 @@
 }
 */
 
+- (IBAction)toClassList:(id)sender {
+    ClassListVC *classList = [[ClassListVC alloc] init];
+    [self presentViewController:classList animated:YES completion:nil];
+}
 @end

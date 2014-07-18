@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
+#import "ClassListVC.h"
 #import "MapVC.h"
 
 @interface AppDelegate ()
@@ -21,9 +23,16 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Set up Parse (backend db/endpoint service)
+    [Parse setApplicationId:@"jLPaR5dxLjHRT8soPkn2jHkNEqRhpKHMuLDljWlx"
+                  clientKey:@"xXbrKjXaTFUTRAcNGAkFvew88t6rjgWAuMs8YUVU"];
+    
+    // Parse analytics
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    MapVC *viewController = [[MapVC alloc] initWithNibName:@"MapVC" bundle:nil];
-    [self.window setRootViewController:viewController];
+    ClassListVC *vc = [[ClassListVC alloc] initWithNibName:@"ClassListVC" bundle:nil];
+    [self.window setRootViewController:vc];
     [self.window makeKeyAndVisible];
 
     return YES;

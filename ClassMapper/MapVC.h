@@ -13,4 +13,6 @@
 
 @property (strong, nonatomic) IBOutlet MKMapView *yaleMap;
 
+- (IBAction)toClassList:(id)sender;
+
 @end
