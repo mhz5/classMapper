@@ -12,6 +12,7 @@
 		BB2B092319766D220061D9BD /* ClassListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB2B092119766D220061D9BD /* ClassListVC.xib */; };
 		BB3541C51979EB3A00C0389B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A2A40E1979984300555B47 /* Parse.framework */; };
 		BB3541C81979EDDA00C0389B /* ClassListDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3541C71979EDDA00C0389B /* ClassListDelegate.m */; };
+		BB3541CB197A130500C0389B /* ClassListFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3541CA197A130500C0389B /* ClassListFileManager.m */; };
 		BB71DEB2196BB80000CA805E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB71DEB1196BB80000CA805E /* main.m */; };
 		BB71DEB5196BB80000CA805E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB71DEB4196BB80000CA805E /* AppDelegate.m */; };
 		BB71DEB8196BB80000CA805E /* ClassMapper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB71DEB6196BB80000CA805E /* ClassMapper.xcdatamodeld */; };
@@ -48,6 +49,8 @@
 		BB2B092119766D220061D9BD /* ClassListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassListVC.xib; sourceTree = "<group>"; };
 		BB3541C61979EDDA00C0389B /* ClassListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassListDelegate.h; sourceTree = "<group>"; };
 		BB3541C71979EDDA00C0389B /* ClassListDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassListDelegate.m; sourceTree = "<group>"; };
+		BB3541C9197A130500C0389B /* ClassListFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassListFileManager.h; sourceTree = "<group>"; };
+		BB3541CA197A130500C0389B /* ClassListFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassListFileManager.m; sourceTree = "<group>"; };
 		BB71DEAC196BB80000CA805E /* ClassMapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassMapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB71DEB0196BB80000CA805E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB71DEB1196BB80000CA805E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -109,6 +112,8 @@
 			children = (
 				BB2B091F19766D220061D9BD /* ClassListVC.h */,
 				BB2B092019766D220061D9BD /* ClassListVC.m */,
+				BB3541C9197A130500C0389B /* ClassListFileManager.h */,
+				BB3541CA197A130500C0389B /* ClassListFileManager.m */,
 				BB2B092119766D220061D9BD /* ClassListVC.xib */,
 				BB3541C61979EDDA00C0389B /* ClassListDelegate.h */,
 				BB3541C71979EDDA00C0389B /* ClassListDelegate.m */,
@@ -303,6 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB3541CB197A130500C0389B /* ClassListFileManager.m in Sources */,
 				BB71DEB5196BB80000CA805E /* AppDelegate.m in Sources */,
 				BB3541C81979EDDA00C0389B /* ClassListDelegate.m in Sources */,
 				BB87073B1975023E00CC48C1 /* MapVC.m in Sources */,
@@ -416,7 +422,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/mizhao/classMapper,
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ClassMapper/Info.plist;
@@ -434,7 +439,6 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/mizhao/classMapper,
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ClassMapper/Info.plist;

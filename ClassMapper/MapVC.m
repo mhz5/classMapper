@@ -29,7 +29,11 @@
 {
     [super viewDidLoad];
     
-    
+    [self centerMap];
+    [self annotateCourses];
+}
+
+- (void)centerMap {
     MKCoordinateRegion region;
     region.center.latitude = 41.314081;
     region.center.longitude = -72.928297;
@@ -38,22 +42,6 @@
     
     [_yaleMap setRegion:region animated:YES];
     _yaleMap.delegate = self;
-
-    
-    [self annotateCourses];
-
-    CLLocationCoordinate2D coor;
-    coor.latitude = 41.314081;
-    coor.longitude = -72.928297;
-    
-    
-    
-}
-
-- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-    NSLog(@"lat: %f", mapView.centerCoordinate.latitude);
-    NSLog(@"long: %f", mapView.centerCoordinate.longitude);
-    
 }
 
 - (void)annotateCourses {
@@ -81,9 +69,7 @@
         [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
             NSArray *arr = response.mapItems;
             for(MKMapItem *item in arr) {
-//                MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-//                annotation.coordinate = coor;
-//                
+
                 [_yaleMap addAnnotation:item.placemark];
                 
             }
@@ -95,6 +81,13 @@
 
 - (void)setCourseList:(NSMutableArray *) courseList {
     _courseList = courseList;
+}
+
+#pragma mark - MapView delegate methods
+
+- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
+    NSLog(@"lat: %f", mapView.centerCoordinate.latitude);
+    NSLog(@"long: %f", mapView.centerCoordinate.longitude);
 }
 
 
@@ -116,7 +109,9 @@
 */
 
 - (IBAction)toClassList:(id)sender {
-    ClassListVC *classList = [[ClassListVC alloc] init];
-    [self presentViewController:classList animated:YES completion:nil];
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSLog(@"Dismissed MapVC");
+    }];
 }
+
 @end
