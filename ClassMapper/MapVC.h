@@ -12,6 +12,7 @@
 @interface MapVC : UIViewController <MKMapViewDelegate>
 
 @property (strong, nonatomic) IBOutlet MKMapView *yaleMap;
+@property (strong, nonatomic) NSArray *courseList;
 
 - (IBAction)toClassList:(id)sender;
 

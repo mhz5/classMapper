@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Michael Zhao. All rights reserved.
 //
 
+#import <Parse/Parse.h>
 #import "MapVC.h"
 #import "ClassListVC.h"
 
@@ -27,7 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    
     MKCoordinateRegion region;
     region.center.latitude = 41.314081;
     region.center.longitude = -72.928297;
@@ -35,26 +37,17 @@
     region.span.longitudeDelta = .04;
     
     [_yaleMap setRegion:region animated:YES];
+    _yaleMap.delegate = self;
+
     
+    [self annotateCourses];
 
     CLLocationCoordinate2D coor;
     coor.latitude = 41.314081;
     coor.longitude = -72.928297;
-    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-    annotation.coordinate = coor;
     
-    [_yaleMap addAnnotation:annotation];
     
-    MKLocalSearchRequest *req = [[MKLocalSearchRequest alloc] init];
-    req.naturalLanguageQuery = @"grove street and whitney, New Haven, CT";
-    req.region = region;
     
-    MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:req];
-    [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
-        NSArray *arr = response.mapItems;
-        for(MKMapItem *item in arr)
-            NSLog(@"Search Results: %@", item.placemark);
-    }];
 }
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
@@ -63,6 +56,46 @@
     
 }
 
+- (void)annotateCourses {
+    for (NSString *course in _courseList) {
+        NSArray *arr = [course componentsSeparatedByString:@" "];
+        
+        // Get the course's building info.
+        PFQuery *query = [PFQuery queryWithClassName:@"Course"];
+        [query whereKey:@"subject" containsString:arr[0]];
+        [query whereKey:@"code" containsString:arr[1]];
+        PFObject *courseObj = [query getFirstObject];
+        NSString *building = [courseObj objectForKey:@"building"];
+        
+        // Look up the building's address.
+        PFQuery *locationQuery = [PFQuery queryWithClassName:@"Building"];
+        [locationQuery whereKey:@"code" containsString:building];
+        PFObject *locObj = [locationQuery getFirstObject];
+        NSString *address = [locObj objectForKey:@"address"];
+        
+        // Search the map for that address.
+        MKLocalSearchRequest *req = [[MKLocalSearchRequest alloc] init];
+        req.naturalLanguageQuery = address;
+        
+        MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:req];
+        [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
+            NSArray *arr = response.mapItems;
+            for(MKMapItem *item in arr) {
+//                MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+//                annotation.coordinate = coor;
+//                
+                [_yaleMap addAnnotation:item.placemark];
+                
+            }
+        }];
+        
+    }
+}
+
+
+- (void)setCourseList:(NSMutableArray *) courseList {
+    _courseList = courseList;
+}
 
 
 - (void)didReceiveMemoryWarning

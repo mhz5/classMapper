@@ -28,7 +28,16 @@ UIModalTransitionStyle modalTransitionStyle;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+    
+    _delegate = [[ClassListDelegate alloc] initWithTextField:_courseField andTextView:_courseView];
+    
+    _courseView.delegate = _delegate;
+    _courseField.delegate = _delegate;
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,9 +46,15 @@ UIModalTransitionStyle modalTransitionStyle;
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dismissKeyboard {
+    [_courseField resignFirstResponder];
+    [_courseView resignFirstResponder];
+}
+
 /* Button action: transition to map view and map classes. */
 - (IBAction)mapClasses:(id)sender {
     MapVC *map = [[MapVC alloc] initWithNibName:@"MapVC" bundle:nil];
+    [map setCourseList:[_delegate getCourseList]];
     
     // Set transition animation style.
     self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;

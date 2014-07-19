@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ClassListDelegate.h"
 
 @interface ClassListVC : UIViewController
 
@@ -17,6 +18,6 @@
 - (IBAction)mapClasses:(id)sender;
 
 
-//@property (weak, nonatomic) 
+@property (strong, nonatomic) ClassListDelegate *delegate;
 
 @end

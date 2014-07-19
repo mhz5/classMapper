@@ -10,6 +10,8 @@
 		BB2B091E197664A50061D9BD /* MapVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB2B091D197664A50061D9BD /* MapVC.xib */; };
 		BB2B092219766D220061D9BD /* ClassListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2B092019766D220061D9BD /* ClassListVC.m */; };
 		BB2B092319766D220061D9BD /* ClassListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB2B092119766D220061D9BD /* ClassListVC.xib */; };
+		BB3541C51979EB3A00C0389B /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A2A40E1979984300555B47 /* Parse.framework */; };
+		BB3541C81979EDDA00C0389B /* ClassListDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3541C71979EDDA00C0389B /* ClassListDelegate.m */; };
 		BB71DEB2196BB80000CA805E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BB71DEB1196BB80000CA805E /* main.m */; };
 		BB71DEB5196BB80000CA805E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB71DEB4196BB80000CA805E /* AppDelegate.m */; };
 		BB71DEB8196BB80000CA805E /* ClassMapper.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BB71DEB6196BB80000CA805E /* ClassMapper.xcdatamodeld */; };
@@ -17,7 +19,6 @@
 		BB71DEC6196BB80000CA805E /* ClassMapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB71DEC5196BB80000CA805E /* ClassMapperTests.m */; };
 		BB87073B1975023E00CC48C1 /* MapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BB87073A1975023E00CC48C1 /* MapVC.m */; };
 		BB87073F1975039000CC48C1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB87073E1975039000CC48C1 /* MapKit.framework */; };
-		F6A2A40F1979984300555B47 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A2A40E1979984300555B47 /* Parse.framework */; };
 		F6A2A4111979986800555B47 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A2A4101979986800555B47 /* AudioToolbox.framework */; };
 		F6A2A4131979987200555B47 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A2A4121979987200555B47 /* CFNetwork.framework */; };
 		F6A2A4151979987800555B47 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6A2A4141979987800555B47 /* CoreLocation.framework */; };
@@ -45,6 +46,8 @@
 		BB2B091F19766D220061D9BD /* ClassListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassListVC.h; sourceTree = "<group>"; };
 		BB2B092019766D220061D9BD /* ClassListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassListVC.m; sourceTree = "<group>"; };
 		BB2B092119766D220061D9BD /* ClassListVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClassListVC.xib; sourceTree = "<group>"; };
+		BB3541C61979EDDA00C0389B /* ClassListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassListDelegate.h; sourceTree = "<group>"; };
+		BB3541C71979EDDA00C0389B /* ClassListDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassListDelegate.m; sourceTree = "<group>"; };
 		BB71DEAC196BB80000CA805E /* ClassMapper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassMapper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB71DEB0196BB80000CA805E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB71DEB1196BB80000CA805E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -86,8 +89,8 @@
 				F6A2A4151979987800555B47 /* CoreLocation.framework in Frameworks */,
 				F6A2A4131979987200555B47 /* CFNetwork.framework in Frameworks */,
 				F6A2A4111979986800555B47 /* AudioToolbox.framework in Frameworks */,
-				F6A2A40F1979984300555B47 /* Parse.framework in Frameworks */,
 				BB87073F1975039000CC48C1 /* MapKit.framework in Frameworks */,
+				BB3541C51979EB3A00C0389B /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +110,8 @@
 				BB2B091F19766D220061D9BD /* ClassListVC.h */,
 				BB2B092019766D220061D9BD /* ClassListVC.m */,
 				BB2B092119766D220061D9BD /* ClassListVC.xib */,
+				BB3541C61979EDDA00C0389B /* ClassListDelegate.h */,
+				BB3541C71979EDDA00C0389B /* ClassListDelegate.m */,
 			);
 			name = ClassList;
 			sourceTree = "<group>";
@@ -299,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB71DEB5196BB80000CA805E /* AppDelegate.m in Sources */,
+				BB3541C81979EDDA00C0389B /* ClassListDelegate.m in Sources */,
 				BB87073B1975023E00CC48C1 /* MapVC.m in Sources */,
 				BB71DEB8196BB80000CA805E /* ClassMapper.xcdatamodeld in Sources */,
 				BB71DEB2196BB80000CA805E /* main.m in Sources */,
@@ -359,7 +365,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				METAL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -395,7 +401,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				METAL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -411,6 +417,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/mizhao/classMapper,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ClassMapper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -428,6 +435,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/mizhao/classMapper,
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = ClassMapper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
