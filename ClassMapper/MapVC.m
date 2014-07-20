@@ -9,6 +9,7 @@
 #import <Parse/Parse.h>
 #import "MapVC.h"
 #import "ClassListVC.h"
+#import "ClassListFileManager.h"
 
 @interface MapVC ()
 
@@ -28,6 +29,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _buildingCodes = [ClassListFileManager retrieveObjectWithName:@"building_codes"];
     
     [self centerMap];
     [self annotateCourses];
@@ -56,10 +59,7 @@
         NSString *building = [courseObj objectForKey:@"building"];
         
         // Look up the building's address.
-        PFQuery *locationQuery = [PFQuery queryWithClassName:@"Building"];
-        [locationQuery whereKey:@"code" containsString:building];
-        PFObject *locObj = [locationQuery getFirstObject];
-        NSString *address = [locObj objectForKey:@"address"];
+        NSString *address = [[_buildingCodes objectForKey:building] objectForKey:@"address"];
         
         // Search the map for that address.
         MKLocalSearchRequest *req = [[MKLocalSearchRequest alloc] init];
@@ -109,9 +109,14 @@
 */
 
 - (IBAction)toClassList:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
+    _yaleMap.mapType = MKMapTypeStandard;
+    [_yaleMap removeFromSuperview];
+    _yaleMap.delegate = nil;
+    _yaleMap = nil;
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
         NSLog(@"Dismissed MapVC");
     }];
 }
+
 
 @end

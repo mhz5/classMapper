@@ -15,11 +15,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *courseField;
 @property (weak, nonatomic) IBOutlet UITextView *courseView;
 
-@property (weak, nonatomic) NSMutableDictionary *buildingCodes;
+@property (strong, nonatomic) NSMutableDictionary *buildingCodes;
 
 - (IBAction)mapClasses:(id)sender;
 
-@property (weak, nonatomic) ClassListDelegate *delegate;
+@property (strong, nonatomic) ClassListDelegate *delegate;
 
 
 @end

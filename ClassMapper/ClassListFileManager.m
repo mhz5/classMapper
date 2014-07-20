@@ -13,7 +13,7 @@
 + (void)storeObject:(NSMutableDictionary *)dict withName:(NSString *)name {
     
     NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *savePath = [filePath stringByAppendingString:name];
+    NSString *savePath = [NSString stringWithFormat:@"%@/%@", filePath, name];
     
     if (FALSE == [[NSFileManager defaultManager] fileExistsAtPath:savePath])
         [[NSFileManager defaultManager] createFileAtPath:savePath contents:nil attributes:nil];
@@ -23,9 +23,10 @@
 
 + (NSMutableDictionary *)retrieveObjectWithName:(NSString *)name {
     NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *savePath = [filePath stringByAppendingString:name];
-    
+    NSString *savePath = [NSString stringWithFormat:@"%@/%@", filePath, name];
+    NSLog(@"%@", savePath);
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithContentsOfFile:savePath];
+
     if (!dict)
         return [NSMutableDictionary dictionary];
     
@@ -34,7 +35,7 @@
 
 + (BOOL)fileExistsWithName:(NSString *)name {
     NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    NSString *savePath = [filePath stringByAppendingString:name];
+    NSString *savePath = [NSString stringWithFormat:@"%@/%@", filePath, name];
     
     return [[NSFileManager defaultManager] fileExistsAtPath:savePath];
 }

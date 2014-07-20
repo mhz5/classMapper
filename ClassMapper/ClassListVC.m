@@ -30,7 +30,7 @@ UIModalTransitionStyle modalTransitionStyle;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     [self setupBuildingCodes];
 
     [self setupKeyboardDismissal];
@@ -39,21 +39,23 @@ UIModalTransitionStyle modalTransitionStyle;
 }
 
 - (void)setupBuildingCodes {
-    if ([ClassListFileManager fileExistsWithName:@"buildings"]) {
+    if ([ClassListFileManager fileExistsWithName:@"building_codes"]) {
         // TODO: Perform sanity checks on building data if the file exists.
-        NSLog(@"File exists.");
-        _buildingCodes = [ClassListFileManager retrieveObjectWithName:@"buildings"];
+        NSLog(@"File 'building_codes' exists.");
+        
+        _buildingCodes = [ClassListFileManager retrieveObjectWithName:@"building_codes"];
         
         NSLog(@"Building codes: %@", _buildingCodes);
     }
     else {
-        NSLog(@"File doesn't exist.");
-        
+        NSLog(@"File 'building_codes' doesn't exist.");
+
         PFQuery *query = [PFQuery queryWithClassName:@"Building"];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (error)
                 NSLog(@"%@", error.userInfo);
             else {
+                NSLog(@"Response: %@", objects);
                 // Dictionary to store all building data.
                 NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
                 
@@ -63,7 +65,7 @@ UIModalTransitionStyle modalTransitionStyle;
                     NSString *code = [obj objectForKey:@"code"];
                     NSString *name = [obj objectForKey:@"name"];
                     
-                    NSDictionary *buildingDict = [NSDictionary dictionaryWithObjects:@[name, address] forKeys:@[@"name", @"address"]];
+                    NSMutableDictionary *buildingDict = [NSMutableDictionary dictionaryWithObjects:@[name, address] forKeys:@[@"name", @"address"]];
                     
                     // Index on building code.
                     [dict setValue:buildingDict forKey:code];
@@ -73,7 +75,7 @@ UIModalTransitionStyle modalTransitionStyle;
                 _buildingCodes = dict;
                 
                 // Save them in file system for future use.
-                [ClassListFileManager storeObject:dict withName:@"buildings"];
+                [ClassListFileManager storeObject:dict withName:@"building_codes"];
                 
                 NSLog(@"Saved file 'building_codes'");
             }
@@ -106,10 +108,8 @@ UIModalTransitionStyle modalTransitionStyle;
 //    self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 //    map.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:map animated:YES completion:nil];
-}
-
-- (void)dismiss {
-    [self dismissViewControllerAnimated:YES completion:^{  }];
+    
+    map = nil;
 }
 
 - (void)didReceiveMemoryWarning

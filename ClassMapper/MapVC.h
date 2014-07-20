@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *yaleMap;
 @property (weak, nonatomic) NSArray *courseList;
+@property (strong, nonatomic) NSMutableDictionary *buildingCodes;
 
 - (IBAction)toClassList:(id)sender;
 
