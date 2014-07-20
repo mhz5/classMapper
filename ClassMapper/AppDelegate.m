@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <GoogleMaps/GoogleMaps.h>
 #import <Parse/Parse.h>
 #import "ClassListVC.h"
 #import "MapVC.h"
@@ -29,6 +30,10 @@
     
     // Parse analytics
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    // Set up Google Maps API.
+    [GMSServices provideAPIKey:@"AIzaSyBNVgppyIcNdl1mNVHe_WL9ndT2iYPVDxs"];
+
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     ClassListVC *vc = [[ClassListVC alloc] initWithNibName:@"ClassListVC" bundle:nil];

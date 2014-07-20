@@ -15,7 +15,9 @@
 
 @end
 
-@implementation MapVC
+@implementation MapVC 
+    GMSMapView *mapView_;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,8 +34,31 @@
     
     _buildingCodes = [ClassListFileManager retrieveObjectWithName:@"building_codes"];
     
+    
+  
+    
     [self centerMap];
     [self annotateCourses];
+}
+
+- (void)createGMap {
+    // Create a GMSCameraPosition that tells the map to display the
+    // coordinate -33.86,151.20 at zoom level 6.
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:41.314081
+                                                            longitude:-72.928297
+                                                                 zoom:15];
+    mapView_ = [GMSMapView mapWithFrame:CGRectMake(0, 0, 320, 568) camera:camera];
+    mapView_.myLocationEnabled = YES;
+    
+    [self.view addSubview:mapView_];
+    [self.view sendSubviewToBack:mapView_];
+    
+    // Creates a marker in the center of the map.
+    GMSMarker *marker = [[GMSMarker alloc] init];
+    marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
+    marker.title = @"Sydney";
+    marker.snippet = @"Australia";
+    marker.map = mapView_;
 }
 
 - (void)centerMap {
@@ -43,8 +68,7 @@
     region.span.latitudeDelta = .04;
     region.span.longitudeDelta = .04;
     
-    [_yaleMap setRegion:region animated:YES];
-    _yaleMap.delegate = self;
+    [_yaleMap setRegion:region];
 }
 
 - (void)annotateCourses {
@@ -69,9 +93,7 @@
         [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
             NSArray *arr = response.mapItems;
             for(MKMapItem *item in arr) {
-
-                [_yaleMap addAnnotation:item.placemark];
-                
+                NSLog(@"%@", item);
             }
         }];
         
@@ -109,10 +131,6 @@
 */
 
 - (IBAction)toClassList:(id)sender {
-    _yaleMap.mapType = MKMapTypeStandard;
-    [_yaleMap removeFromSuperview];
-    _yaleMap.delegate = nil;
-    _yaleMap = nil;
     [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
         NSLog(@"Dismissed MapVC");
     }];

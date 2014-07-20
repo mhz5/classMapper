@@ -31,6 +31,7 @@ UIModalTransitionStyle modalTransitionStyle;
 {
     [super viewDidLoad];
 
+    NSLog(@"%@", [[NSBundle mainBundle] bundleIdentifier]);
     [self setupBuildingCodes];
 
     [self setupKeyboardDismissal];
