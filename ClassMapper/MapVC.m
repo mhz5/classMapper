@@ -36,8 +36,8 @@
     
     
   
-    
-    [self centerMap];
+    [self createGMap];
+//    [self centerMap];
     [self annotateCourses];
 }
 
@@ -51,14 +51,9 @@
     mapView_.myLocationEnabled = YES;
     
     [self.view addSubview:mapView_];
-    [self.view sendSubviewToBack:mapView_];
+    [self.view insertSubview:mapView_ aboveSubview:_yaleMap];
     
-    // Creates a marker in the center of the map.
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
-    marker.title = @"Sydney";
-    marker.snippet = @"Australia";
-    marker.map = mapView_;
+    
 }
 
 - (void)centerMap {
@@ -93,7 +88,14 @@
         [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
             NSArray *arr = response.mapItems;
             for(MKMapItem *item in arr) {
-                NSLog(@"%@", item);
+//                NSLog(@"Map Item: %@", item);
+
+                // Creates a marker at the specified location.
+                GMSMarker *marker = [[GMSMarker alloc] init];
+                marker.position = item.placemark.coordinate;
+                marker.title = course;
+                marker.snippet = item.placemark.name;
+                marker.map = mapView_;
             }
         }];
         
