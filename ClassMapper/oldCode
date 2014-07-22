@@ -1,0 +1,14 @@
+
+MAPKIT:
+==============
+- (void)centerMap {
+    MKCoordinateRegion region;
+    region.center.latitude = 41.314081;
+    region.center.longitude = -72.928297;
+    region.span.latitudeDelta = .04;
+    region.span.longitudeDelta = .04;
+    
+    [_yaleMap setRegion:region];
+}
+
+==============

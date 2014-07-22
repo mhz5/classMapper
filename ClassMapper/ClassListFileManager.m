@@ -21,10 +21,19 @@
     [dict writeToFile:savePath atomically:NO];
 }
 
++ (void)deleteObjectWithName:(NSString *)name {
+    NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *savePath = [NSString stringWithFormat:@"%@/%@", filePath, @"building_codes"];
+    
+    [[NSFileManager defaultManager] removeItemAtPath:savePath error:nil];
+}
+
 + (NSMutableDictionary *)retrieveObjectWithName:(NSString *)name {
     NSString *filePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     NSString *savePath = [NSString stringWithFormat:@"%@/%@", filePath, name];
-    NSLog(@"%@", savePath);
+
+    //    NSLog(@"%@", savePath);
+    
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithContentsOfFile:savePath];
 
     if (!dict)

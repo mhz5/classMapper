@@ -20,7 +20,11 @@ $(document).ready(function() {
 			course.set('subject', attr[0]);
 			course.set('code', attr[1]);
 			course.set('building', attr[2]);
+			course.set('meet_days', parseMeetDays(attr[3]));
+			course.set('meet_time', attr[4]);
 
+			// console.log(parseMeetDays(attr[3]));
+			
 			course.save(null,
 						{success: function(res) {
 							console.log(res);
@@ -28,3 +32,16 @@ $(document).ready(function() {
 		});
 	});
 });
+
+function parseMeetDays(days) {
+	if (days === "")
+		return [];
+	if (days === "M-F")
+		return ['M', 'T', 'W', 'TH', 'F'];
+	if (days === "MW")
+		return ['M', 'W'];
+	if (days === "TTH")
+		return ['T', 'TH'];
+
+	return [days];
+}

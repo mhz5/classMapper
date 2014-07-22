@@ -11,9 +11,8 @@
 @interface ClassListFileManager : NSObject
 
 + (void)storeObject:(NSMutableDictionary *)dict withName:(NSString *)name;
-
++ (void)deleteObjectWithName:(NSString *)name;
 + (NSMutableDictionary *)retrieveObjectWithName:(NSString *)name;
-
 + (BOOL)fileExistsWithName:(NSString *)name;
 
 @end

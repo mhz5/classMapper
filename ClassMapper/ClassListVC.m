@@ -31,7 +31,6 @@ UIModalTransitionStyle modalTransitionStyle;
 {
     [super viewDidLoad];
 
-    NSLog(@"%@", [[NSBundle mainBundle] bundleIdentifier]);
     [self setupBuildingCodes];
 
     [self setupKeyboardDismissal];
@@ -42,16 +41,15 @@ UIModalTransitionStyle modalTransitionStyle;
 - (void)setupBuildingCodes {
     if ([ClassListFileManager fileExistsWithName:@"building_codes"]) {
         // TODO: Perform sanity checks on building data if the file exists.
-        NSLog(@"File 'building_codes' exists.");
-        
+
         _buildingCodes = [ClassListFileManager retrieveObjectWithName:@"building_codes"];
         
-        NSLog(@"Building codes: %@", _buildingCodes);
+//        NSLog(@"File 'building_codes' exists.\nBuilding codes: %@", _buildingCodes);
     }
     else {
-        NSLog(@"File 'building_codes' doesn't exist.");
 
         PFQuery *query = [PFQuery queryWithClassName:@"Building"];
+        [query setLimit:150];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (error)
                 NSLog(@"%@", error.userInfo);
@@ -77,8 +75,8 @@ UIModalTransitionStyle modalTransitionStyle;
                 
                 // Save them in file system for future use.
                 [ClassListFileManager storeObject:dict withName:@"building_codes"];
-                
-                NSLog(@"Saved file 'building_codes'");
+
+                //        NSLog(@"Creating file 'building_codes.");
             }
         }];
     }
@@ -88,6 +86,7 @@ UIModalTransitionStyle modalTransitionStyle;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
 }
+
 - (void)dismissKeyboard {
     [_courseField resignFirstResponder];
     [_courseView resignFirstResponder];
@@ -116,7 +115,6 @@ UIModalTransitionStyle modalTransitionStyle;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

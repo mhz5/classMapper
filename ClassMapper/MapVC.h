@@ -12,9 +12,10 @@
 
 @interface MapVC : UIViewController <MKMapViewDelegate, GMSMapViewDelegate>
 
-@property (strong, nonatomic) IBOutlet MKMapView *yaleMap;
+@property (strong, nonatomic) NSMutableDictionary *courseSchedule;
 @property (weak, nonatomic) NSArray *courseList;
 @property (strong, nonatomic) NSMutableDictionary *buildingCodes;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *daySegment;
 
 - (IBAction)toClassList:(id)sender;
 

@@ -20,6 +20,7 @@
 		BB71DEC6196BB80000CA805E /* ClassMapperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB71DEC5196BB80000CA805E /* ClassMapperTests.m */; };
 		BB87073B1975023E00CC48C1 /* MapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BB87073A1975023E00CC48C1 /* MapVC.m */; };
 		BB87073F1975039000CC48C1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB87073E1975039000CC48C1 /* MapKit.framework */; };
+		BBB89B50197E3DBB00FA3D46 /* oldCode in Resources */ = {isa = PBXBuildFile; fileRef = BBB89B4F197E3DBB00FA3D46 /* oldCode */; };
 		BBBABE7B197C323300394029 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBBABE7A197C323300394029 /* GoogleMaps.framework */; };
 		BBBABE7D197C333A00394029 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBBABE7C197C333A00394029 /* AVFoundation.framework */; };
 		BBBABE7F197C334200394029 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBBABE7E197C334200394029 /* CoreData.framework */; };
@@ -78,6 +79,7 @@
 		BB8707391975023E00CC48C1 /* MapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapVC.h; sourceTree = "<group>"; };
 		BB87073A1975023E00CC48C1 /* MapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapVC.m; sourceTree = "<group>"; };
 		BB87073E1975039000CC48C1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		BBB89B4F197E3DBB00FA3D46 /* oldCode */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = oldCode; sourceTree = "<group>"; };
 		BBBABE7A197C323300394029 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		BBBABE7C197C333A00394029 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		BBBABE7E197C334200394029 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -154,9 +156,9 @@
 				BB2B092019766D220061D9BD /* ClassListVC.m */,
 				BB3541C9197A130500C0389B /* ClassListFileManager.h */,
 				BB3541CA197A130500C0389B /* ClassListFileManager.m */,
-				BB2B092119766D220061D9BD /* ClassListVC.xib */,
 				BB3541C61979EDDA00C0389B /* ClassListDelegate.h */,
 				BB3541C71979EDDA00C0389B /* ClassListDelegate.m */,
+				BB2B092119766D220061D9BD /* ClassListVC.xib */,
 			);
 			name = ClassList;
 			sourceTree = "<group>";
@@ -194,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				BBBABE94197C374C00394029 /* Notes */,
+				BBB89B4F197E3DBB00FA3D46 /* oldCode */,
 				BB71DEB3196BB80000CA805E /* AppDelegate.h */,
 				BB71DEB4196BB80000CA805E /* AppDelegate.m */,
 				BB2B092419766D280061D9BD /* ClassList */,
@@ -344,6 +347,7 @@
 			files = (
 				BB71DEBA196BB80000CA805E /* Images.xcassets in Resources */,
 				BBBABE95197C374C00394029 /* Notes in Resources */,
+				BBB89B50197E3DBB00FA3D46 /* oldCode in Resources */,
 				BB2B091E197664A50061D9BD /* MapVC.xib in Resources */,
 				BB2B092319766D220061D9BD /* ClassListVC.xib in Resources */,
 				BBBABE8D197C34D900394029 /* GoogleMaps.bundle in Resources */,

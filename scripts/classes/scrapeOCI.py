@@ -4,12 +4,15 @@ import urllib2
 import re 		# Regular expression
 from pprint import pprint
 
+
+
+
+
+
 baseUrl = 'http://students.yale.edu/oci/resultDetail.jsp?'
 term = '&term=201401'
 
-classHtml = urllib2.urlopen('http://students.yale.edu/oci/resultDetail.jsp?course=23297&term=201401').read()
-
-for i in range(23000, 24000):
+for i in range(23000, 23500):
 	fullUrl = baseUrl + 'course=' + str(i) + term
 	
 	# Try to scrape the class. Move on to next one if unable to establish HTTP connection.
@@ -45,10 +48,17 @@ for i in range(23000, 24000):
 	prof = info[2].td.a.string	# Professor
 
 	meet = info[3].td.get_text()	# Meeting time & location
-	arr = meet.split()
+	meet_arr = meet.split()
+	# Account for instances where there are separately listed meeting days and times
+	meet_days = ''
+	meet_time = ''
+	if len(meet_arr) > 1:
+		meet_days = parseMeetDays(meet_arr[0])
+		meet_time = meet_arr[1]
+
 	building = 'Location unavailable'
-	if len(arr) >= 3:
-		building = arr[2]
+	if len(meet_arr) >= 3:
+		building = meet_arr[2]
 
 	semester = main[5].table.tr('td')[0].string	# Semester (eg. Spring 2014)
 
@@ -69,8 +79,8 @@ for i in range(23000, 24000):
 	# print 'Building: ' + building
 
 	# To create CSV
-	lst = [subj, code, building]
-	print ','.join(lst)
+	lst = [subj, code, building, meet_days, meet_time]
+	print ','.join(lst).upper()
 
 	# print 'Name: ' + name 
 	# print 'Meet: ' + meet

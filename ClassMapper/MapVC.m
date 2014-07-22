@@ -15,9 +15,10 @@
 
 @end
 
-@implementation MapVC 
-    GMSMapView *mapView_;
-
+@implementation MapVC {
+    GMSMapView *_yaleMap;
+    NSMutableArray *_curMarkers;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,40 +34,55 @@
     [super viewDidLoad];
     
     _buildingCodes = [ClassListFileManager retrieveObjectWithName:@"building_codes"];
-    
-    
   
+    _curMarkers = [[NSMutableArray alloc] init];
+    
     [self createGMap];
-//    [self centerMap];
-    [self annotateCourses];
+    [self setupDaySegment];
+    [self initCourseSchedule];
+    [self loadCourses];
+    // NOTE: Show Monday's courses in loadCourses()
+    
 }
 
+// Create the Google Map focused on Yale campus.
 - (void)createGMap {
-    // Create a GMSCameraPosition that tells the map to display the
-    // coordinate -33.86,151.20 at zoom level 6.
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:41.314081
                                                             longitude:-72.928297
                                                                  zoom:15];
-    mapView_ = [GMSMapView mapWithFrame:CGRectMake(0, 0, 320, 568) camera:camera];
-    mapView_.myLocationEnabled = YES;
+    _yaleMap = [GMSMapView mapWithFrame:CGRectMake(0, 0, 320, 568) camera:camera];
+    _yaleMap.myLocationEnabled = YES;
     
-    [self.view addSubview:mapView_];
-    [self.view insertSubview:mapView_ aboveSubview:_yaleMap];
-    
-    
+
+    [self.view addSubview:_yaleMap];
+    [self.view insertSubview:_yaleMap atIndex:0];
 }
 
-- (void)centerMap {
-    MKCoordinateRegion region;
-    region.center.latitude = 41.314081;
-    region.center.longitude = -72.928297;
-    region.span.latitudeDelta = .04;
-    region.span.longitudeDelta = .04;
-    
-    [_yaleMap setRegion:region];
+- (void)setupDaySegment {
+    [_daySegment addTarget:self action:@selector(handleDaySegmentChange) forControlEvents:UIControlEventValueChanged];
 }
 
-- (void)annotateCourses {
+- (void)handleDaySegmentChange {
+    NSLog(@"index: %d", (int) _daySegment.selectedSegmentIndex);
+    NSArray *days = @[@"M", @"T", @"W", @"TH", @"F"];
+    
+    NSInteger curSegment = _daySegment.selectedSegmentIndex;
+    
+    [self showCoursesForDay:[days objectAtIndex:curSegment]];
+}
+
+// Initializes the dictionary used to maintain the course schedule.
+// Dictionary of 5 Arrays (one for each day of the week);
+- (void)initCourseSchedule {
+    _courseSchedule = [[NSMutableDictionary alloc] init];
+    NSArray *days = @[@"M", @"T", @"W", @"TH", @"F"];
+    
+    for (NSString *day in days)
+        [_courseSchedule setObject:[[NSMutableArray alloc] init] forKey:day];
+}
+
+// Store course information in the _courseSchedule dictionary.
+- (void)loadCourses {
     for (NSString *course in _courseList) {
         NSArray *arr = [course componentsSeparatedByString:@" "];
         
@@ -74,12 +90,18 @@
         PFQuery *query = [PFQuery queryWithClassName:@"Course"];
         [query whereKey:@"subject" containsString:arr[0]];
         [query whereKey:@"code" containsString:arr[1]];
+        
+        // TODO: Move into background.
         PFObject *courseObj = [query getFirstObject];
+        
         NSString *building = [courseObj objectForKey:@"building"];
+        
+        // Days this course meets.
+        NSArray *days = [courseObj objectForKey:@"meet_days"];
         
         // Look up the building's address.
         NSString *address = [[_buildingCodes objectForKey:building] objectForKey:@"address"];
-        
+  
         // Search the map for that address.
         MKLocalSearchRequest *req = [[MKLocalSearchRequest alloc] init];
         req.naturalLanguageQuery = address;
@@ -88,6 +110,7 @@
         [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
             NSArray *arr = response.mapItems;
             for(MKMapItem *item in arr) {
+                
 //                NSLog(@"Map Item: %@", item);
 
                 // Creates a marker at the specified location.
@@ -95,24 +118,45 @@
                 marker.position = item.placemark.coordinate;
                 marker.title = course;
                 marker.snippet = item.placemark.name;
-                marker.map = mapView_;
+                
+                for (NSString *day in days) {
+                    [[_courseSchedule objectForKey:day] addObject:marker];
+                    [_curMarkers addObject:marker];
+                }
+                
             }
+            
+            // Show Monday's courses in callback, so map isn't initially empty.
+            [self showCoursesForDay:@"M"];
+
+//            NSLog(@"Course Schedule: %@", _courseSchedule);
+
         }];
         
     }
 }
 
-
 - (void)setCourseList:(NSMutableArray *) courseList {
     _courseList = courseList;
 }
 
-#pragma mark - MapView delegate methods
 
-- (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-    NSLog(@"lat: %f", mapView.centerCoordinate.latitude);
-    NSLog(@"long: %f", mapView.centerCoordinate.longitude);
+- (void)showCoursesForDay:(NSString *) day {
+    
+    // Clear the map and the _curMarkers array.
+    for (GMSMarker *marker in _curMarkers)
+        marker.map = nil;
+    
+    [_curMarkers removeAllObjects];
+    
+    // Show the markers for the specified day.
+    for (GMSMarker *marker in [_courseSchedule objectForKey:day]) {
+        [_curMarkers addObject:marker];
+        marker.map = _yaleMap;
+    }
 }
+
+
 
 
 - (void)didReceiveMemoryWarning
